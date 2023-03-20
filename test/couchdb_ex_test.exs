@@ -6,6 +6,7 @@ defmodule CouchDBExTest do
     children = [
       {CouchDBEx.Worker, [
           hostname: Application.get_env(:couchdb_ex, :hostname),
+          port: Application.get_env(:couchdb_ex, :port),
           username: Application.get_env(:couchdb_ex, :username),
           password: Application.get_env(:couchdb_ex, :password),
           auth_method: String.to_atom(Application.get_env(:couchdb_ex, :auth_method, "cookie"))

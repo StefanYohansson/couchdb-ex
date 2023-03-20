@@ -90,6 +90,28 @@ Now, you can use functions from `CouchDBEx`
 This library also includes subscribing to database changes with `CouchDBEx.changes_sub` and `_unsub`,
 see respective functions documentation for more
 
+## Running tests
+
+You need a running CouchDB instance.
+
+```
+$ mix test
+```
+
+If you want to override values, you can set those environment variables.
+
+- `COUCHDB_HOSTNAME`
+- `COUCHDB_PORT`
+- `COUCHDB_USERNAME`
+- `COUCHDB_PASSWORD`
+- `COUCHDB_AUTH_METHOD`
+
+example:
+
+```
+$ COUCHDB_USERNAME=admin COUCHDB_PASSWORD=password mix test
+```
+
 ## Contribution
 
 Please do open issues and pull requests if you feel like something
