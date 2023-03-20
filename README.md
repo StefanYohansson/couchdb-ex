@@ -31,7 +31,7 @@ Documentation can be found [here](https://hexdocs.pm/couchdb_ex)
 defp deps do
     [
         # ...
-        {:couchdb_ex, "~> 0.2.1"},
+        {:couchdb_ex, "~> 0.3.0"},
     ]
 end
 ```

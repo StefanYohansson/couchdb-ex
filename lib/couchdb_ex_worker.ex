@@ -235,7 +235,7 @@ defmodule CouchDBEx.Worker do
   """
   def handle_call(
     {:document_delete, id_rev, database}, from, state
-  ) when is_tuple(id_rev) or is_list(id_rev) do
+  ) when (is_tuple(id_rev) and tuple_size(id_rev) == 2) or is_list(id_rev) do
     if is_list(id_rev) do
       final_id_rev = Enum.map(id_rev, fn {id, rev} -> %{:_id => id, :_rev => rev, :_deleted => true} end)
 
