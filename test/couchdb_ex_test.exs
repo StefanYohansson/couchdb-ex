@@ -5,17 +5,17 @@ defmodule CouchDBExTest do
   setup_all do
     children = [
       {CouchDBEx.Worker, [
-          hostname: "http://localhost",
-          username: "couchdb",
-          password: "couchdb",
-          auth_method: :cookie
+          hostname: Application.get_env(:couchdb_ex, :hostname),
+          username: Application.get_env(:couchdb_ex, :username),
+          password: Application.get_env(:couchdb_ex, :password),
+          auth_method: String.to_atom(Application.get_env(:couchdb_ex, :auth_method, "cookie"))
         ]}
     ]
 
     opts = [strategy: :one_for_one, name: CouchDBEx.Test.Supervisor]
-    Supervisor.start_link(children, opts)
+    {status, args} = Supervisor.start_link(children, opts)
 
-    :ok
+    status
   end
 
   setup do
